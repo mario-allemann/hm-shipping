@@ -2,6 +2,7 @@ package fhnw.hackermans.Shopstantly.ShippingService.business.service;
 
 import java.util.Date;
 
+@Service
 public class ShippingService {
 	private Date estimateDate;
 	private Date effectiveDate;
@@ -25,7 +26,4 @@ public class ShippingService {
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
-	
-	
-
 }
