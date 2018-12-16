@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
 import fhnw.hmshipping.domain.Shipping;
 import fhnw.hmshipping.domain.ShippingRepo;
@@ -35,6 +37,18 @@ public class HmShippingApplication {
 	@ResponseBody
 	Iterable<Shipping> getAllShippings() {
 		return shiRepo.findAll();
+	}
+	
+	@RequestMapping("/removeFromWarehouse")
+	@ResponseBody
+	private static void getEmployees(@RequestParam int prodId, @RequestParam int amount)
+	{
+	    final String uri = "http://hm-inventory.herokuapp.com/getFromWarehouse";
+	    String parms = "?prodId="+ prodId + "&amount=" + amount;
+
+	    RestTemplate restTemplate = new RestTemplate();
+	    String result = restTemplate.getForObject((uri+parms), String.class);
+	    System.out.println(result);
 	}
 }
 
