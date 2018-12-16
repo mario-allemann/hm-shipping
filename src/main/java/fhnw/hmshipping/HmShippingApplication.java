@@ -1,12 +1,14 @@
-package fhnw.hackermans.Shopstantly.ShippingService;
+package fhnw.hmshipping;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ShippingServiceApplication {
+public class HmShippingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ShippingServiceApplication.class, args);
+		SpringApplication.run(HmShippingApplication.class, args);
 	}
+
 }
+
