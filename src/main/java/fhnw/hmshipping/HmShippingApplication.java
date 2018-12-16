@@ -53,7 +53,7 @@ public class HmShippingApplication {
 	    restTemplate.getForObject((uri+parms), String.class);
 	}
 	
-	@RequestMapping("/ship")
+	@RequestMapping("/shipOrder")
 	@ResponseBody
 	void ship(@RequestParam int order_id) {
 		Date today = new Date();
