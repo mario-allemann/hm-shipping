@@ -1,5 +1,9 @@
 package fhnw.hmshipping;
 
+
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -47,6 +51,20 @@ public class HmShippingApplication {
 	    String parms = "?prodId="+ prodId + "&amount=" + amount;
 	    RestTemplate restTemplate = new RestTemplate();
 	    restTemplate.getForObject((uri+parms), String.class);
+	}
+	
+	@RequestMapping("/ship")
+	@ResponseBody
+	void ship(@RequestParam int order_id) {
+		Date today = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(today);		
+		cal.add(Calendar.DATE, 1);
+		
+		Date tomorrow = cal.getTime();
+		Shipping ship = new Shipping(tomorrow, order_id);
+		
+		shiRepo.save(ship);
 	}
 }
 

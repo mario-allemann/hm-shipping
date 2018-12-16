@@ -1,6 +1,8 @@
 package fhnw.hmshipping.domain;
 
 import org.hibernate.LockMode;
+
+import java.util.Date;
 import java.util.List;
 
 import java.io.Serializable;
@@ -8,9 +10,14 @@ import javax.persistence.*;
 @Entity
 @Table(name="shipping")
 public class Shipping implements Serializable {
-	public Shipping() {
-	}
+
 	
+	public Shipping(Date estimatedDate, Integer orderId) {
+		super();
+		this.estimatedDate = estimatedDate;
+		this.orderId = orderId;
+	}
+
 	@Column(name="trackingId", nullable=false)	
 	@Id	
 	@GeneratedValue(generator="SHIPPING_TRACKINGID_GENERATOR")	
