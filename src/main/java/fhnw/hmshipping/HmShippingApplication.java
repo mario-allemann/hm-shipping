@@ -29,7 +29,7 @@ public class HmShippingApplication {
 	@RequestMapping("/")
 	@ResponseBody
 	String home() {
-		return "This is the homepage, faggots";
+		return "This is the homepage";
 	}
 
 	// Map /shipping to display the table
