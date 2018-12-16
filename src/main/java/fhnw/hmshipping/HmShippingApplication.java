@@ -55,14 +55,14 @@ public class HmShippingApplication {
 	
 	@RequestMapping("/shipOrder")
 	@ResponseBody
-	void ship(@RequestParam int order_id) {
+	void ship(@RequestParam int orderId) {
 		Date today = new Date();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(today);		
 		cal.add(Calendar.DATE, 1);
 		
 		Date tomorrow = cal.getTime();
-		Shipping ship = new Shipping(tomorrow, order_id);
+		Shipping ship = new Shipping(tomorrow, orderId);
 		
 		shiRepo.save(ship);
 	}
