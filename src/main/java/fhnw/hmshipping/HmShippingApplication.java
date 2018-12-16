@@ -32,23 +32,21 @@ public class HmShippingApplication {
 		return "This is the homepage, faggots";
 	}
 
-	// Map test page
+	// Map /shipping to display the table
 	@RequestMapping("/shipping")
 	@ResponseBody
 	Iterable<Shipping> getAllShippings() {
 		return shiRepo.findAll();
 	}
 	
+	// test
 	@RequestMapping("/removeFromWarehouse")
 	@ResponseBody
-	private static void getEmployees(@RequestParam int prodId, @RequestParam int amount)
-	{
-	    final String uri = "http://hm-inventory.herokuapp.com/getFromWarehouse";
+	private static void getEmployees(@RequestParam int prodId, @RequestParam int amount) {
+	    String uri = "http://hm-inventory.herokuapp.com/getFromWarehouse";
 	    String parms = "?prodId="+ prodId + "&amount=" + amount;
-
 	    RestTemplate restTemplate = new RestTemplate();
-	    String result = restTemplate.getForObject((uri+parms), String.class);
-	    System.out.println(result);
+	    restTemplate.getForObject((uri+parms), String.class);
 	}
 }
 
