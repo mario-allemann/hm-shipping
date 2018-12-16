@@ -11,7 +11,9 @@ import javax.persistence.*;
 @Table(name="shipping")
 public class Shipping implements Serializable {
 
-	
+	public Shipping() {
+		
+	}
 	public Shipping(Date estimatedDate, Integer orderId) {
 		super();
 		this.estimatedDate = estimatedDate;
